@@ -2,6 +2,7 @@
 import { useState } from "react";
 import LandingElement from "@/components/LandingElement";
 import NewsletterSection from "@/components/NewsletterSection";
+import Image from "next/image";
 
 export default function LandingPage() {
   const [navOpen, setNavOpen] = useState(false);
@@ -11,8 +12,12 @@ export default function LandingPage() {
       {/* Navbar Stripe-style */}
       <nav className="fixed top-0 left-0 w-full z-30 flex items-center justify-between px-6 md:px-16 py-4 bg-white/60 backdrop-blur-md shadow-sm">
         <div className="flex items-center gap-2">
-          <img src="/logo.png" alt="Logo" className="h-8 w-8 rounded-full" />
-          <span className="font-bold text-lg text-[#0a2540]">MonBusiness</span>
+          <Image 
+            width={32}
+            height={32}
+           src="/logo.png"
+            alt="Logo" className="h-8 w-8 rounded-full" />
+          <span className="font-bold text-lg text-[#0a2540]">ClientMaitrise</span>
         </div>
         <div className="hidden md:flex gap-8 text-[#0a2540] font-medium">
           <a href="#services" className="hover:text-[#6366f1] transition">Services</a>
@@ -63,7 +68,9 @@ export default function LandingPage() {
           </a>
         </div>
         <div className="flex-1 flex justify-center mt-12 md:mt-0 animate-slide-right">
-          <img
+          <Image
+            width={480}
+            height={480}
             src="/hero-illustration.png"
             alt="Illustration"
             className="w-[350px] md:w-[480px] rounded-3xl shadow-2xl border-4 border-white/30"
@@ -110,21 +117,33 @@ export default function LandingPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div className="flex flex-col items-center text-center animate-slide-left">
             <div className="bg-[#6366f1]/10 rounded-full p-5 mb-4">
-              <img src="/expertise.png" alt="" className="h-12" />
+              <Image
+                width={48}
+                height={48}
+               src="/expertise.png" 
+               alt="" className="h-12" />
             </div>
             <h3 className="font-semibold text-xl text-[#6366f1]">Expertise reconnue</h3>
             <p className="text-[#0a2540]/80 mt-2">Des années d’expérience en web, SEO et marketing digital.</p>
           </div>
           <div className="flex flex-col items-center text-center animate-fade-in">
             <div className="bg-[#a78bfa]/10 rounded-full p-5 mb-4">
-              <img src="/accompagnement.png" alt="" className="h-12" />
+              <Image 
+              width={48}
+              height={48}
+              src="/accompagnement.png" 
+              alt="" className="h-12" />
             </div>
             <h3 className="font-semibold text-xl text-[#a78bfa]">Accompagnement sur-mesure</h3>
             <p className="text-[#0a2540]/80 mt-2">Des solutions adaptées à chaque étape de votre croissance.</p>
           </div>
           <div className="flex flex-col items-center text-center animate-slide-right">
             <div className="bg-[#3b82f6]/10 rounded-full p-5 mb-4">
-              <img src="/resultats.png" alt="" className="h-12" />
+              <Image 
+              width={48}
+              height={48}
+              src="/resultats.png" 
+              alt="" className="h-12" />
             </div>
             <h3 className="font-semibold text-xl text-[#3b82f6]">Résultats concrets</h3>
             <p className="text-[#0a2540]/80 mt-2">Des clients satisfaits et des résultats mesurables.</p>
@@ -146,7 +165,11 @@ export default function LandingPage() {
               “Grâce à leur audit SEO, notre site a gagné en visibilité et nous avons doublé nos prospects !”
             </p>
             <div className="flex items-center gap-3 mt-4">
-              <img src="/client1.jpg" alt="" className="h-12 w-12 rounded-full border-2 border-[#6366f1]" />
+              <Image
+                width={48}
+                height={48}
+               src="/client1.jpg" alt="" 
+               className="h-12 w-12 rounded-full border-2 border-[#6366f1]" />
               <span className="font-semibold text-[#6366f1]">Sophie, entrepreneure</span>
             </div>
           </div>
@@ -155,7 +178,11 @@ export default function LandingPage() {
               “L’accompagnement personnalisé a fait toute la différence pour lancer mon activité !”
             </p>
             <div className="flex items-center gap-3 mt-4">
-              <img src="/client2.jpg" alt="" className="h-12 w-12 rounded-full border-2 border-[#a78bfa]" />
+              <Image 
+                width={48}
+                height={48}
+              src="/client2.jpg"
+               alt="" className="h-12 w-12 rounded-full border-2 border-[#a78bfa]" />
               <span className="font-semibold text-[#a78bfa]">Karim, coach sportif</span>
             </div>
           </div>
@@ -164,7 +191,11 @@ export default function LandingPage() {
               “Des conseils concrets et des résultats rapides, je recommande à 100% !”
             </p>
             <div className="flex items-center gap-3 mt-4">
-              <img src="/client3.jpg" alt="" className="h-12 w-12 rounded-full border-2 border-[#3b82f6]" />
+              <Image
+              width={48}
+              height={48} 
+              src="/client3.jpg" 
+              alt="" className="h-12 w-12 rounded-full border-2 border-[#3b82f6]" />
               <span className="font-semibold text-[#3b82f6]">Julie, commerçante</span>
             </div>
           </div>
@@ -184,7 +215,7 @@ export default function LandingPage() {
       {/* FOOTER Stripe-style */}
       <footer className="relative z-10 bg-[#0a2540] text-white py-10 px-6 md:px-16 flex flex-col md:flex-row justify-between items-center gap-4">
         <div className="flex items-center gap-2">
-          <img src="/logo.png" alt="Logo" className="h-8 w-8 rounded-full" />
+          <Image src="/logo.png" alt="Logo" className="h-8 w-8 rounded-full" />
           <span className="font-bold text-lg">MonBusiness</span>
         </div>
         <div className="text-sm text-blue-100">

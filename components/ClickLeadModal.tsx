@@ -45,7 +45,7 @@ export default function ClickLeadModal({ elementName, onClose }: ClickLeadModalP
   return (
     <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
       <div className="bg-white p-6 rounded-lg w-full max-w-sm">
-        <h2 className="text-xl font-bold mb-4">Recevoir plus d'infos sur "{elementName}"</h2>
+        <h2 className="text-xl font-bold mb-4">Recevoir plus d&apos;infos sur &quot;{elementName}&quot;</h2>
         <form onSubmit={handleSubmit} className="space-y-3">
           <input
             type="email"

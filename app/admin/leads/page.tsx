@@ -5,6 +5,12 @@ import { writeFileSync } from "fs";
 import { join } from "path";
 import dbConnect from "../../../utils/db";
 
+type Lead = {
+  email: string;
+  elementName: string;
+  createdAt: string | Date;
+};
+
 export const dynamic = "force-dynamic";
 
 export default async function LeadsAdminPage() {
@@ -13,13 +19,13 @@ export default async function LeadsAdminPage() {
 
   const handleExport = async () => {
     const csvRows = [
-      ["Email", "Element Name", "Date"],
-      ...leads.map((lead: any) => [
-        lead.email,
-        lead.elementName,
-        format(new Date(lead.createdAt), "yyyy-MM-dd HH:mm"),
-      ]),
-    ];
+  ["Email", "Element Name", "Date"],
+  ...leads.map((lead) => [
+    "email" in lead ? lead.email : "",
+    "elementName" in lead ? lead.elementName : "",
+    "createdAt" in lead ? format(new Date(lead.createdAt as string), "yyyy-MM-dd HH:mm") : "",
+  ]),
+];
 
     const csvContent = csvRows.map((row) => row.join(",")).join("\n");
     const filePath = join(process.cwd(), "public", "leads.csv");
@@ -39,7 +45,7 @@ export default async function LeadsAdminPage() {
           </tr>
         </thead>
         <tbody>
-          {leads.map((lead: any, idx: number) => (
+          {leads.map((lead, idx: number) => (
             <tr key={idx} className="border-t">
               <td className="p-2">{lead.email}</td>
               <td className="p-2">{lead.elementName}</td>

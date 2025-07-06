@@ -2,6 +2,12 @@ import dbConnect from "../../../utils/db";
 import Email from "../../../models/Email";
 import nodemailer from "nodemailer";
 
+
+
+interface MongoError extends Error {
+  code?: number;
+}
+
 const SITE_URL = "https://aselektrika-tek.vercel.app/"; // Remplace par ton vrai domaine
 const DEFAULT_TITLE = "Bienvenue sur notre newsletter !";
 const DEFAULT_MESSAGE =
@@ -56,22 +62,22 @@ export async function POST(req: Request) {
     } catch (err: unknown) {
       // Gestion du cas où deux requêtes arrivent en même temps
       if (
-        typeof err === "object" &&
-        err !== null &&
-        "code" in err &&
-        (err as any).code === 11000
-      ) {
-        return new Response(
-          JSON.stringify({ message: "Cet email est déjà abonné." }),
-          { status: 409, headers: { "Content-Type": "application/json" } }
-        );
-      }
+  typeof err === "object" &&
+  err !== null &&
+  "code" in err &&
+  (err as MongoError).code === 11000
+) {
+  return new Response(
+    JSON.stringify({ message: "Cet email est déjà abonné." }),
+    { status: 409, headers: { "Content-Type": "application/json" } }
+  );
+}
       throw err;
     }
 
     // Envoi automatique du mail de bienvenue (HTML)
     await transporter.sendMail({
-      from: '"Newsletter AS ELEKTRIKA & TEK" <noreply@example.com>',
+      from: '"Newsletter AS CLIENT MAITRISE" <noreply@example.com>',
       to: email,
       subject: DEFAULT_TITLE,
       html: getWelcomeHtml(email),
