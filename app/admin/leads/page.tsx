@@ -5,11 +5,6 @@ import { writeFileSync } from "fs";
 import { join } from "path";
 import dbConnect from "../../../utils/db";
 
-type Lead = {
-  email: string;
-  elementName: string;
-  createdAt: string | Date;
-};
 
 export const dynamic = "force-dynamic";
 
