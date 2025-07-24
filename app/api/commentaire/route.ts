@@ -34,6 +34,6 @@ export async function POST(req: Request) {
     });
     return new Response(JSON.stringify({ ok: true }), { status: 200 });
   } catch (e) {
-    return new Response(JSON.stringify({ error: "Erreur lors de l'envoi à Telegram" }), { status: 500 });
+    return new Response(JSON.stringify({ e: "Erreur lors de l'envoi à Telegram" }), { status: 500 });
   }
 }

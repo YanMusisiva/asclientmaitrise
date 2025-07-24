@@ -95,8 +95,9 @@ L’équipe MasterFree
         text,
       }),
     });
-  } catch (e) {
-    // On ne bloque pas l'utilisateur si Telegram échoue
+  } catch {
+    // Rien à faire ici, on ne veut pas bloquer l'envoi de l'email
+    // console.error("Erreur lors de l'envoi à Telegram", e);
   }
 
   return new Response(JSON.stringify({ ok: true }), { status: 200 });

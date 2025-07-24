@@ -43,7 +43,7 @@ export default function SuiviModal({ open, onClose, courseTitle, onSuccess }: Su
             setSent(true);
             setEmail("");
             if (onSuccess) onSuccess();
-        } catch (err) {
+        } catch  {
             setError("Impossible d'envoyer la demande.");
         }
         setSending(false);

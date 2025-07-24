@@ -89,7 +89,7 @@ const videoSeries = [
   },
 ];
 
-function useVideoProgress(seriesKey: string, videoCount: number) {
+function useVideoProgress(seriesKey: string) {
   const [progress, setProgress] = useState<number[]>([]);
 
   // Charger la progression depuis localStorage
@@ -287,7 +287,7 @@ export default function MasterclassLikePage() {
   <SuiviModal open={modalOpen} onClose={() => setModalOpen(false)} courseTitle={modalCourse} onSuccess={() => setModalOpen(false)} />
   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
     {videoSeries.map((course, idx) => {
-      const { progress, markAsWatched } = useVideoProgress(course.title, course.videos.length);
+      const { progress, markAsWatched } = useVideoProgress(course.title);
       return (
         <div
           key={course.title}
