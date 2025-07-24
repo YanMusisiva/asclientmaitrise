@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -147,7 +148,7 @@ export default function MasterclassLikePage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalCourse, setModalCourse] = useState("");
   const [videoModal, setVideoModal] = useState<{ url: string; title: string } | null>(null);
-  
+
   // Stagger effect pour featuredCourses
   const { refs: featuredRefs, visible: featuredVisible } = useStaggeredInView(featuredCourses.length);
   // Stagger effect pour videoSeries
