@@ -317,7 +317,7 @@ export default function MasterclassLikePage() {
             className="rounded-full"
           />
           <span className="font-bold text-2xl tracking-tight text-white">
-            MasterFree
+            AutoDidacte+
           </span>
         </div>
         <nav className="hidden md:flex gap-10 text-white/90 font-medium text-lg">
@@ -519,17 +519,14 @@ export default function MasterclassLikePage() {
             alt="Logo"
             className="h-8 w-8 rounded-full"
           />
-          <span className="font-bold text-lg">MasterFree</span>
+          <span className="font-bold text-lg">Autodidacte+</span>
         </div>
         <div className="text-sm text-white/60">
-          © {new Date().getFullYear()} MasterFree. Tous droits réservés.
+          © {new Date().getFullYear()} Autodidacte+. Tous droits réservés.
         </div>
         <div className="flex gap-4">
           <a href="#" className="hover:underline">
-            Mentions légales
-          </a>
-          <a href="#" className="hover:underline">
-            Contact
+            Up
           </a>
         </div>
       </footer>
