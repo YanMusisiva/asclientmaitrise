@@ -34,8 +34,10 @@ export default function CommentModal({ open, onClose }: { open: boolean; onClose
       setSent(true);
       setName("");
       setComment("");
-    } catch (err: any) {
-      setError(err.message || "Erreur inconnue.");
+    } catch  {
+      
+        setError("Erreur inconnue.");
+      
     } finally {
       setLoading(false);
     }

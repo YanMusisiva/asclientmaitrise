@@ -144,10 +144,13 @@ function useStaggeredInView(count: number) {
 
 export default function MasterclassLikePage() {
   const [navOpen, setNavOpen] = useState(false);
-   const [modalOpen, setModalOpen] = useState(false);
-    const [modalCourse, setModalCourse] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalCourse, setModalCourse] = useState("");
   const [videoModal, setVideoModal] = useState<{ url: string; title: string } | null>(null);
 
+  const progresses = videoSeries.map(course =>
+    useVideoProgress(course.title)
+  );
   // Stagger effect pour featuredCourses
   const { refs: featuredRefs, visible: featuredVisible } = useStaggeredInView(featuredCourses.length);
   // Stagger effect pour videoSeries
@@ -286,9 +289,9 @@ export default function MasterclassLikePage() {
   </h2>
   <SuiviModal open={modalOpen} onClose={() => setModalOpen(false)} courseTitle={modalCourse} onSuccess={() => setModalOpen(false)} />
   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-    {videoSeries.map((course, idx) => {
-      const { progress, markAsWatched } = useVideoProgress(course.title);
-      return (
+{videoSeries.map((course, idx) => {
+  const { progress, markAsWatched } = progresses[idx];
+  return (
         <div
           key={course.title}
           ref={el => { seriesRefs.current[idx] = el; }}
@@ -371,7 +374,7 @@ export default function MasterclassLikePage() {
      
 {/* COMMENT MODAL & BUTTON */}
 {(() => {
-  const [modalOpen, setModalOpen] = useState(false);
+  
   return (
     <>
       <CommentModal open={modalOpen} onClose={() => setModalOpen(false)} />
