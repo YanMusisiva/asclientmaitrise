@@ -4,7 +4,9 @@ export async function POST(req: Request) {
   const { email: rawEmail, course } = await req.json();
   const email = (rawEmail || "").trim();
   if (!/^[\w-.]+@[\w-]+\.[a-z]{2,}$/i.test(email)) {
-    return new Response(JSON.stringify({ error: "Email invalide." }), { status: 400 });
+    return new Response(JSON.stringify({ error: "Email invalide." }), {
+      status: 400,
+    });
   }
 
   // 1. Envoi du mail à l'utilisateur
@@ -17,11 +19,11 @@ export async function POST(req: Request) {
   });
 
   try {
-  await transporter.sendMail({
-  from: `"MasterFree" <${process.env.SMTP_USER}>`,
-  to: email,
-  subject: `Bienvenue dans le suivi de ${course} – C'est parti !`,
-  text: `👋 Bonjour,
+    await transporter.sendMail({
+      from: `"AutoDidacte+" <${process.env.SMTP_USER}>`,
+      to: email,
+      subject: `Bienvenue dans le suivi de ${course} – C'est parti !`,
+      text: `👋 Bonjour,
 
 Merci d'avoir choisi de progresser avec nous.
 
@@ -43,7 +45,7 @@ https://masterfree.com
 À très vite pour la suite de votre progression dans "${course}",
 L’équipe MasterFree
 `,
-  html: `
+      html: `
   <div style="background:#18181b;padding:48px 0;font-family:sans-serif;color:#fff;text-align:center;">
     <div style="background:#23232b;max-width:520px;margin:0 auto;border-radius:16px;padding:32px 24px;box-shadow:0 8px 32px #0004;">
       <img src="https://masterfree.com/logo-mc.png" alt="MasterFree" style="width:48px;height:48px;border-radius:50%;margin-bottom:16px;" />
@@ -76,10 +78,12 @@ L’équipe MasterFree
     </div>
   </div>
   `,
-});
-
+    });
   } catch {
-    return new Response(JSON.stringify({ error: "Erreur lors de l'envoi de l'email" }), { status: 500 });
+    return new Response(
+      JSON.stringify({ error: "Erreur lors de l'envoi de l'email" }),
+      { status: 500 }
+    );
   }
 
   // 2. Envoi à Telegram
@@ -87,14 +91,17 @@ L’équipe MasterFree
     const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN!;
     const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID!;
     const text = `📩 Nouvelle demande de suivi\nCours : ${course}\nEmail : ${email}`;
-    await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chat_id: TELEGRAM_CHAT_ID,
-        text,
-      }),
-    });
+    await fetch(
+      `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text,
+        }),
+      }
+    );
   } catch {
     // Rien à faire ici, on ne veut pas bloquer l'envoi de l'email
     // console.error("Erreur lors de l'envoi à Telegram", e);

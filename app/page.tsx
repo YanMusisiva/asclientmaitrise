@@ -134,6 +134,59 @@ function useVideoProgress(seriesKey: string) {
   return { progress, markAsWatched };
 }
 
+// type Course = {
+//   title: string;
+//   teacher: string;
+//   image: string;
+//   videoUrl: string;
+// };
+
+// function CourseSearchBar({ courses }: { courses: Course[] }) {
+//   const [query, setQuery] = useState("");
+//   const [result, setResult] = useState<Course | null>(null);
+
+//   useEffect(() => {
+//     if (!query) {
+//       setResult(null);
+//       return;
+//     }
+//     // Recherche simple par titre (case insensitive)
+//     const bestMatch = courses.find((course) =>
+//       course.title.toLowerCase().includes(query.toLowerCase())
+//     );
+//     setResult(bestMatch || null);
+//   }, [query, courses]);
+
+//   return (
+//     <div className="w-full flex flex-col items-center mb-8">
+//       <input
+//         type="text"
+//         value={query}
+//         onChange={(e) => setQuery(e.target.value)}
+//         placeholder="Rechercher un cours..."
+//         className="w-full max-w-md px-4 py-2 rounded-full border border-[#e86d5a] focus:outline-none focus:border-white bg-black/80 text-white mb-2"
+//       />
+//       {result ? (
+//         <a
+//           href="#featured"
+//           className="mt-2 text-[#e86d5a] underline text-lg font-semibold hover:text-white transition"
+//         >
+//           {`Voir le cours : ${result.title}`}
+//         </a>
+//       ) : (
+//         query && (
+//           <span className="mt-2 text-white/60 text-lg font-semibold">
+//             aucun résultat
+//           </span>
+//         )
+//       )}
+//     </div>
+//   );
+// }
+
+// Utilisation dans ta page principale :
+// <CourseSearchBar courses={featuredCourses} />
+
 function useStaggeredInView(count: number) {
   const refs = useRef<(HTMLDivElement | null)[]>([]);
   const [visible, setVisible] = useState(Array(count).fill(false));
@@ -276,7 +329,8 @@ function VideoSeriesCard({
 
 export default function MasterclassLikePage() {
   const [navOpen, setNavOpen] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [suiviModalOpen, setSuiviModalOpen] = useState(false);
+  const [commentModalOpen, setCommentModalOpen] = useState(false);
   const [modalCourse, setModalCourse] = useState("");
   const [videoModal, setVideoModal] = useState<{
     url: string;
@@ -393,10 +447,10 @@ export default function MasterclassLikePage() {
           Cours à la une
         </h2>
         <SuiviModal
-          open={modalOpen}
-          onClose={() => setModalOpen(false)}
+          open={suiviModalOpen}
+          onClose={() => setSuiviModalOpen(false)}
           courseTitle={modalCourse}
-          onSuccess={() => setModalOpen(false)}
+          onSuccess={() => setSuiviModalOpen(false)}
         />
         <div className="flex flex-col gap-10">
           {featuredCourses.map((course, idx) => (
@@ -445,9 +499,9 @@ export default function MasterclassLikePage() {
                 <button
                   onClick={() => {
                     setModalCourse(course.title);
-                    setModalOpen(true);
+                    setSuiviModalOpen(true);
                   }}
-                  disabled={modalOpen} // désactive tous les boutons si un modal est ouvert
+                  disabled={suiviModalOpen} // désactive tous les boutons si un modal est ouvert
                   className="mt-2 bg-[#e86d5a] hover:bg-white hover:text-[#e86d5a] text-white px-4 py-2 rounded-full font-semibold shadow transition border border-[#e86d5a] hover:border-white disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Suivi gratuit
@@ -465,10 +519,10 @@ export default function MasterclassLikePage() {
           Parcours vidéo
         </h2>
         <SuiviModal
-          open={modalOpen}
-          onClose={() => setModalOpen(false)}
+          open={suiviModalOpen}
+          onClose={() => setSuiviModalOpen(false)}
           courseTitle={modalCourse}
-          onSuccess={() => setModalOpen(false)}
+          onSuccess={() => setSuiviModalOpen(false)}
         />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {videoSeries.map((course, idx) => (
@@ -482,8 +536,8 @@ export default function MasterclassLikePage() {
               visible={seriesVisible[idx]}
               setVideoModal={setVideoModal}
               setModalCourse={setModalCourse}
-              setModalOpen={setModalOpen}
-              modalOpen={modalOpen}
+              setModalOpen={setSuiviModalOpen}
+              modalOpen={suiviModalOpen}
             />
           ))}
         </div>
@@ -494,12 +548,12 @@ export default function MasterclassLikePage() {
         return (
           <>
             <CommentModal
-              open={modalOpen}
-              onClose={() => setModalOpen(false)}
+              open={commentModalOpen}
+              onClose={() => setCommentModalOpen(false)}
             />
             <div className="w-full flex justify-center py-8 bg-black/80 border-t border-white/10">
               <button
-                onClick={() => setModalOpen(true)}
+                onClick={() => setCommentModalOpen(true)}
                 className="bg-[#e86d5a] hover:bg-white hover:text-[#e86d5a] text-white px-8 py-3 rounded-full font-semibold shadow transition border border-[#e86d5a] hover:border-white"
               >
                 Laisser un commentaire
@@ -519,10 +573,10 @@ export default function MasterclassLikePage() {
             alt="Logo"
             className="h-8 w-8 rounded-full"
           />
-          <span className="font-bold text-lg">Autodidacte+</span>
+          <span className="font-bold text-lg">AutoDidacte+</span>
         </div>
         <div className="text-sm text-white/60">
-          © {new Date().getFullYear()} Autodidacte+. Tous droits réservés.
+          © {new Date().getFullYear()} AutoDidacte+. Tous droits réservés.
         </div>
         <div className="flex gap-4">
           <a href="#" className="hover:underline">
