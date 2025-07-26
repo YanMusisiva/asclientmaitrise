@@ -153,12 +153,6 @@ const featuredCourses = [
     image: "/devops.jpg",
     videoUrl: "https://www.youtube.com/watch?v=Fy9k_L9hlso", // Docker & Kubernetes full course
   },
-  {
-    title: "Analyse de données / SQL / Excel / Power BI",
-    teacher: "freeCodeCamp.org",
-    image: "/data-analysis.jpg",
-    videoUrl: "https://www.youtube.com/watch?v=r6TeOHZPeUQ", // SQL full tutorial for beginners
-  },
 ];
 
 // Parcours multi-vidéos
@@ -327,28 +321,42 @@ function useVideoProgress(seriesKey: string) {
 // Utilisation dans ta page principale :
 // <CourseSearchBar courses={featuredCourses} />
 
-function useStaggeredInView(count: number) {
+export function useStaggeredInView(
+  count: number,
+  options?: { once?: boolean; enabled?: boolean }
+) {
+  const { once = false, enabled = true } = options || {};
   const refs = useRef<(HTMLDivElement | null)[]>([]);
   const [visible, setVisible] = useState(Array(count).fill(false));
+  const triggeredOnce = useRef(Array(count).fill(false));
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined" || !enabled) return;
+
     const observer = new window.IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const idx = Number((entry.target as HTMLElement).dataset.idx);
-          setVisible((v) => {
-            const next = [...v];
-            next[idx] = entry.isIntersecting;
-            return next;
-          });
+          if (entry.isIntersecting && (!once || !triggeredOnce.current[idx])) {
+            triggeredOnce.current[idx] = true;
+            setVisible((v) => {
+              const next = [...v];
+              next[idx] = true;
+              return next;
+            });
+          }
         });
       },
-      { threshold: 0.2 }
+      {
+        threshold: 0.1, // plus rapide à déclencher
+        rootMargin: "0px 0px -20% 0px", // déclenche légèrement avant que l’élément soit 100% visible
+      }
     );
+
     refs.current.forEach((el) => el && observer.observe(el));
     return () => observer.disconnect();
-  }, [count]);
+  }, [count, enabled, once]);
+
   return { refs, visible };
 }
 
@@ -383,7 +391,6 @@ function VideoSeriesCard({
       className={`bg-black/80 rounded-2xl shadow-xl border border-white/10 p-6 flex flex-col transition-all duration-700
         ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}
       `}
-      style={{ transitionDelay: visible ? `${idx * 120}ms` : "0ms" }}
     >
       <div className="flex items-center gap-4 mb-4">
         <Image
@@ -479,11 +486,13 @@ export default function MasterclassLikePage() {
 
   // Stagger effect pour featuredCourses
   const { refs: featuredRefs, visible: featuredVisible } = useStaggeredInView(
-    featuredCourses.length
+    featuredCourses.length,
+    { once: true, enabled: true }
   );
   // Stagger effect pour videoSeries
   const { refs: seriesRefs, visible: seriesVisible } = useStaggeredInView(
-    videoSeries.length
+    videoSeries.length,
+    { once: true, enabled: true }
   );
 
   return (
@@ -560,7 +569,7 @@ export default function MasterclassLikePage() {
       {/* HERO */}
       <section className="pt-32 md:pt-44 pb-20 px-6 md:px-16 flex flex-col items-center text-center">
         <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight text-white drop-shadow animate-slide-down">
-          Apprenez des meilleurs.
+          Apprenez des meilleurs ressources.
           <br />
           <span className="text-[#e86d5a]">Gratuitement.</span>
         </h1>
@@ -600,18 +609,13 @@ export default function MasterclassLikePage() {
                 featuredRefs.current[idx] = el;
               }}
               data-idx={idx}
-              className={`flex flex-col md:flex-row items-center bg-black/80 rounded-2xl shadow-xl border border-white/10 overflow-hidden transition-all duration-700
+              className={`flex flex-col md:flex-row items-center bg-black/80 rounded-2xl shadow-xl border border-white/10 overflow-hidden transition-all duration-100
                 ${
                   featuredVisible[idx]
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-12"
                 }
               `}
-              style={{
-                transitionDelay: featuredVisible[idx]
-                  ? `${idx * 120}ms`
-                  : "0ms",
-              }}
             >
               <Image
                 width={320}

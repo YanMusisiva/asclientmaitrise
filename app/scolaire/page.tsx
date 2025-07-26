@@ -159,28 +159,43 @@ const schoolCourses = [
 ];
 
 // Hook pour stagger effect sur tous les éléments de la page
-function useStaggeredInView(count: number) {
+
+export function useStaggeredInView(
+  count: number,
+  options?: { once?: boolean; enabled?: boolean }
+) {
+  const { once = false, enabled = true } = options || {};
   const refs = useRef<(HTMLDivElement | null)[]>([]);
   const [visible, setVisible] = useState(Array(count).fill(false));
+  const triggeredOnce = useRef(Array(count).fill(false));
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined" || !enabled) return;
+
     const observer = new window.IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const idx = Number((entry.target as HTMLElement).dataset.idx);
-          setVisible((v) => {
-            const next = [...v];
-            next[idx] = entry.isIntersecting;
-            return next;
-          });
+          if (entry.isIntersecting && (!once || !triggeredOnce.current[idx])) {
+            triggeredOnce.current[idx] = true;
+            setVisible((v) => {
+              const next = [...v];
+              next[idx] = true;
+              return next;
+            });
+          }
         });
       },
-      { threshold: 0.2 }
+      {
+        threshold: 0.1, // plus rapide à déclencher
+        rootMargin: "0px 0px -20% 0px", // déclenche légèrement avant que l’élément soit 100% visible
+      }
     );
+
     refs.current.forEach((el) => el && observer.observe(el));
     return () => observer.disconnect();
-  }, [count]);
+  }, [count, enabled, once]);
+
   return { refs, visible };
 }
 
