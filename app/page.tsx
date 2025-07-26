@@ -10,104 +10,244 @@ import CommentModal from "@/components/CommentModal";
 // Cours à la une (vidéo unique)
 const featuredCourses = [
   {
-    title: "Photographie Créative",
-    teacher: "Camille Laurent",
-    image: "/course1.jpg",
-    videoUrl: "https://www.youtube.com/watch?v=xxxxxxx",
+    title: "Pensée Critique & Résolution de Problèmes",
+    teacher: "TED-Ed",
+    image: "/critical-thinking.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=dItUGF8GdTw",
   },
   {
-    title: "Écriture de Scénario",
-    teacher: "Jean Morel",
-    image: "/course2.jpg",
-    videoUrl: "https://www.youtube.com/watch?v=yyyyyyy",
+    title: "Compétences Numériques & Programmation",
+    teacher: "freeCodeCamp.org",
+    image: "/digital-skills.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=8PopR3x-VMY",
   },
   {
-    title: "Cuisine Gastronomique",
-    teacher: "Paul Bocuse",
-    image: "/course5.jpg",
-    videoUrl: "https://www.youtube.com/watch?v=zzzzzzz",
+    title: "Esprit d’Entreprise & Innovation",
+    teacher: "Y Combinator",
+    image: "/entrepreneurship.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=CBYhVcO4WgI",
   },
   {
-    title: "Leadership Inspirant",
-    teacher: "Marie Curie",
-    image: "/course6.jpg",
-    videoUrl: "https://www.youtube.com/watch?v=aaaaaaa",
+    title: "Développement Durable & Écologie",
+    teacher: "Kurzgesagt – In a Nutshell",
+    image: "/sustainability.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=3Pkb65rwZVI",
   },
   {
-    title: "Peinture Moderne",
-    teacher: "Claude Monet",
-    image: "/course7.jpg",
-    videoUrl: "https://www.youtube.com/watch?v=bbbbbbb",
+    title: "Communication Interculturelle",
+    teacher: "TED",
+    image: "/intercultural.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=YMyofREc5Jk",
+  },
+  {
+    title: "Santé Mentale & Bien-être",
+    teacher: "Psych2Go",
+    image: "/mental-health.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=1Evwgu369Jw",
+  },
+  {
+    title: "Recherche Scientifique & Méthodologie",
+    teacher: "CrashCourse",
+    image: "/scientific-method.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=KZaCy5Z87FA",
+  },
+  {
+    title: "Éthique & Citoyenneté",
+    teacher: "The School of Life",
+    image: "/ethics.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=joCOWaaTzvM",
+  },
+  {
+    title: "Leadership & Intelligence Emotionnelle",
+    teacher: "Daniel Goleman / Big Think",
+    image: "/leadership.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=Y7m9eNoB3NU",
+  },
+  {
+    title: "Littératie Financière & Économie",
+    teacher: "Graham Stephan",
+    image: "/financial-literacy.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=F3QpgXBtDeo",
+  },
+
+  {
+    title: "Intelligence Artificielle / Prompt Engineering",
+    teacher: "ForwardFuture AI",
+    image: "/ai-prompt.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=uDIW34h8cmM", // Prompt Engineering Guide – From Beginner to Advanced
+  },
+  {
+    title: "Création de contenu (YouTube, TikTok, blog)",
+    teacher: "Think Media",
+    image: "/content.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=IBmgnV1j0o8", // YouTube Growth strategy tutorial
+  },
+  {
+    title: "Récapitulatif The Millionaire Fastlane",
+    teacher: "The White Coat Investor (MJ DeMarco)",
+    image: "/fastlane.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=x_GMokHeHmQ",
+  },
+
+  {
+    title: "Atelier 2 – Être efficace en cuisine !",
+    teacher: "Vanessa Daigle (Vimeo, français)",
+    image: "/course_notech7.jpg",
+    videoUrl: "https://vimeo.com/1010328351",
+  },
+
+  {
+    title: "Marketing / Dropshipping expliqué (Un Créatif)",
+    teacher: "Un Créatif (YouTube, français)",
+    image: "/course_notech9.jpg",
+    videoUrl: "https://www.youtube.com/@UnCreatif",
+  },
+  {
+    title: "Économie vulgarisée (Stupid Economics)",
+    teacher: "Stupid Economics (YouTube, français)",
+    image: "/course_notech10.jpg",
+    videoUrl: "https://www.youtube.com/c/StupidEconomics",
+  },
+
+  {
+    title: "Développement Web (Frontend + Backend)",
+    teacher: "freeCodeCamp.org",
+    image: "/dev-web.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=ZxKM3DCV2kE", // Learn Full Stack Web Dev from Scratch
+  },
+
+  {
+    title: "Design UI/UX & No‑Code (Figma, Webflow)",
+    teacher: "Flux Academy",
+    image: "/uiux.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=3Q6iW01G3h0", // Example popular UI/UX tutorial
+  },
+  {
+    title: "Marketing Digital & Growth Hacking",
+    teacher: "Neil Patel",
+    image: "/marketing.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=2iQKcZQ-P2I", // Example Social Media marketing crash course
+  },
+  {
+    title: "Développement Mobile (Flutter / React Native)",
+    teacher: "freeCodeCamp.org",
+    image: "/mobile-dev.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=1JWqfjcYenA", // Full Flutter course
+  },
+  {
+    title: "Création de business en ligne (e‑commerce, SaaS)",
+    teacher: "Oberlo",
+    image: "/ecommerce.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=U3m1YfNnqfE", // How to start e-commerce tutorial
+  },
+  {
+    title: "Automatisation & Productivité (Python, Zapier)",
+    teacher: "Automation Step by Step",
+    image: "/automation.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=HJutL1aDrVE", // Zapier & Python automation guide
+  },
+
+  {
+    title: "DevOps & Cloud (AWS, Docker, CI/CD)",
+    teacher: "TechWorld with Nana",
+    image: "/devops.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=Fy9k_L9hlso", // Docker & Kubernetes full course
+  },
+  {
+    title: "Analyse de données / SQL / Excel / Power BI",
+    teacher: "freeCodeCamp.org",
+    image: "/data-analysis.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=r6TeOHZPeUQ", // SQL full tutorial for beginners
   },
 ];
 
 // Parcours multi-vidéos
 const videoSeries = [
   {
-    title: "Devenir Développeur Web",
-    teacher: "Sophie Martin",
-    image: "/course3.jpg",
-    videos: [
-      { title: "Introduction", url: "https://www.youtube.com/watch?v=vid1" },
-      { title: "HTML & CSS", url: "https://www.youtube.com/watch?v=vid2" },
-      { title: "JavaScript", url: "https://www.youtube.com/watch?v=vid3" },
-      { title: "Projet final", url: "https://www.youtube.com/watch?v=vid4" },
-    ],
-    progress: 1,
-  },
-  {
-    title: "L’Art du Pitch",
-    teacher: "Karim Benali",
-    image: "/course4.jpg",
+    title: "Apprendre le Développement Web",
+    teacher: "Jean Dupuis",
+    image: "/web-course.jpg",
     videos: [
       {
-        title: "Trouver son idée",
-        url: "https://www.youtube.com/watch?v=vid5",
+        title: "Développement Web : C'est quoi ?",
+        url: "https://www.youtube.com/watch?v=VfGW0Qiy2I0",
       },
       {
-        title: "Structurer son discours",
-        url: "https://www.youtube.com/watch?v=vid6",
+        title: "HTML & CSS en 1h - Cours complet débutant",
+        url: "https://www.youtube.com/watch?v=ec8vSKJuZTk",
       },
       {
-        title: "Captiver l’audience",
-        url: "https://www.youtube.com/watch?v=vid7",
+        title: "Apprendre JavaScript en 1h",
+        url: "https://www.youtube.com/watch?v=jS4aFq5-91M",
+      },
+      {
+        title: "Créer son premier site web portfolio",
+        url: "https://www.youtube.com/watch?v=YtYT1Onfx-0",
       },
     ],
     progress: 0,
   },
   {
-    title: "Maîtriser le Piano",
-    teacher: "Ludwig Beethoven",
-    image: "/course8.jpg",
+    title: "Pitch & Prise de Parole",
+    teacher: "Laura Menet",
+    image: "/pitch-course.jpg",
     videos: [
-      { title: "Bases du piano", url: "https://www.youtube.com/watch?v=vid8" },
       {
-        title: "Accords et gammes",
-        url: "https://www.youtube.com/watch?v=vid9",
+        title: "Comment faire un bon pitch en 5 minutes",
+        url: "https://www.youtube.com/watch?v=ecadAkswUqI",
       },
-      { title: "Improvisation", url: "https://www.youtube.com/watch?v=vid10" },
-      { title: "Performance", url: "https://www.youtube.com/watch?v=vid11" },
+      {
+        title: "Améliorer son éloquence naturellement",
+        url: "https://www.youtube.com/watch?v=gl4K5M7T1HY",
+      },
+      {
+        title: "Parler en public sans stress",
+        url: "https://www.youtube.com/watch?v=5Peo-ivmupE",
+      },
     ],
-    progress: 2,
+    progress: 0,
   },
   {
-    title: "Créativité & Innovation",
-    teacher: "Steve Jobs",
-    image: "/course9.jpg",
+    title: "Jouer du Piano Facilement",
+    teacher: "Claire Lemoine",
+    image: "/piano-course.jpg",
     videos: [
       {
-        title: "Penser différemment",
-        url: "https://www.youtube.com/watch?v=vid12",
+        title: "Comment lire une partition",
+        url: "https://www.youtube.com/watch?v=hlrxDNBO03E",
       },
       {
-        title: "Innover au quotidien",
-        url: "https://www.youtube.com/watch?v=vid13",
+        title: "Piano Débutant : Apprendre un morceau facilement",
+        url: "https://www.youtube.com/watch?v=Ix9TtzS3J9c",
+      },
+      {
+        title: "Méthode Hanon pour échauffement",
+        url: "https://www.youtube.com/watch?v=FiDUOozLPRc",
+      },
+      {
+        title: "Apprendre 'Let It Be' au piano (débutants)",
+        url: "https://www.youtube.com/watch?v=ghXeZgF1YGo",
       },
     ],
-    progress: 1,
+    progress: 0,
+  },
+  {
+    title: "Développer sa Créativité",
+    teacher: "Julien Bouret",
+    image: "/creativity-course.jpg",
+    videos: [
+      {
+        title: "Débloquer sa créativité en 5 étapes",
+        url: "https://www.youtube.com/watch?v=klg_s1X9FCw",
+      },
+      {
+        title: "Design Thinking expliqué simplement",
+        url: "https://www.youtube.com/watch?v=_r0VX-aU_T8",
+      },
+    ],
+    progress: 0,
   },
 ];
-
 function useVideoProgress(seriesKey: string) {
   const [progress, setProgress] = useState<number[]>([]);
 

@@ -40,15 +40,15 @@ Nous croyons que l'apprentissage doit être accessible à tous, et nous sommes h
 Il serait préférable d'avoir terminé le cours gratuit qui se trouve sur votre espace personnel pour tirer le meilleur parti des astuces que nous allons partager.
 
 Accédez à votre espace ici pour commencer :
-https://masterfree.com
+https://asclientmaitrise.vercel.app/
 
 À très vite pour la suite de votre progression dans "${course}",
-L’équipe MasterFree
+L’équipe AutoDidacte+
 `,
       html: `
   <div style="background:#18181b;padding:48px 0;font-family:sans-serif;color:#fff;text-align:center;">
     <div style="background:#23232b;max-width:520px;margin:0 auto;border-radius:16px;padding:32px 24px;box-shadow:0 8px 32px #0004;">
-      <img src="https://masterfree.com/logo-mc.png" alt="MasterFree" style="width:48px;height:48px;border-radius:50%;margin-bottom:16px;" />
+      <img src="https://asclientmaitrise.vercel.app/logo-mc.png" alt="AutoDidacte+" style="width:48px;height:48px;border-radius:50%;margin-bottom:16px;" />
       <h1 style="color:#e86d5a;font-size:1.8rem;margin-bottom:12px;">Bienvenue dans le suivi de ${course} !</h1>
       <p style="font-size:1.1rem;line-height:1.5;margin-bottom:24px;">
         👋 <b>Merci d'avoir choisi de progresser avec nous.</b>
@@ -71,9 +71,9 @@ L’équipe MasterFree
       <p style="font-size:1rem;line-height:1.5;margin-bottom:24px;">
         Il serait préférable d'avoir terminé le cours gratuit disponible sur votre espace personnel pour tirer le meilleur parti de ce suivi.
       </p>
-      <a href="https://masterfree.com" style="display:inline-block;background:#e86d5a;color:#fff;text-decoration:none;font-weight:bold;padding:14px 28px;border-radius:32px;font-size:1rem;margin-bottom:24px;">Accéder à mon espace</a>
+      <a href="https://asclientmaitrise.vercel.app/" style="display:inline-block;background:#e86d5a;color:#fff;text-decoration:none;font-weight:bold;padding:14px 28px;border-radius:32px;font-size:1rem;margin-bottom:24px;">Accéder à mon espace</a>
       <p style="margin-top:24px;color:#aaa;font-size:0.95rem;line-height:1.4;">
-        À très vite pour la suite de votre progression dans "<b>${course}</b>",<br>L’équipe MasterFree
+        À très vite pour la suite de votre progression dans "<b>${course}</b>",<br>L’équipe AutoDidacte+
       </p>
     </div>
   </div>

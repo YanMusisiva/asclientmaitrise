@@ -42,7 +42,7 @@ export default function ModalVideoPlayer({
       <div className="bg-black rounded-xl p-4 relative w-full max-w-2xl">
         <button
           onClick={onClose}
-          className="absolute top-2 right-4 text-2xl text-white/60 hover:text-white"
+          className="absolute top-2 right-4 text-4xl  text-white/60 hover:text-white"
           aria-label="Fermer"
         >
           ×
