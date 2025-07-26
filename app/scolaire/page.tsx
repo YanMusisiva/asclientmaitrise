@@ -160,7 +160,7 @@ const schoolCourses = [
 
 // Hook pour stagger effect sur tous les éléments de la page
 
-export function useStaggeredInView(
+function useStaggeredInView(
   count: number,
   options?: { once?: boolean; enabled?: boolean }
 ) {
@@ -264,9 +264,6 @@ export default function ScolairePage() {
                           : "opacity-0 translate-y-12"
                       }
                     `}
-                    style={{
-                      transitionDelay: visible[idx] ? `${idx * 120}ms` : "0ms",
-                    }}
                   >
                     <div className="flex items-center gap-4 mb-4">
                       <Image

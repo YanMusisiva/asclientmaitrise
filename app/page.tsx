@@ -321,7 +321,7 @@ function useVideoProgress(seriesKey: string) {
 // Utilisation dans ta page principale :
 // <CourseSearchBar courses={featuredCourses} />
 
-export function useStaggeredInView(
+function useStaggeredInView(
   count: number,
   options?: { once?: boolean; enabled?: boolean }
 ) {
