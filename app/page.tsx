@@ -10,66 +10,11 @@ import CommentModal from "@/components/CommentModal";
 // Cours à la une (vidéo unique)
 const featuredCourses = [
   {
-    title: "Pensée Critique & Résolution de Problèmes",
-    teacher: "TED-Ed",
-    image: "/critical-thinking.jpg",
-    videoUrl: "https://www.youtube.com/watch?v=dItUGF8GdTw",
+    title: "How to Sell on WhatsApp",
+    teacher: "OrderLIVE",
+    image: "https://img.youtube.com/vi/C5EF4a9snTo/hqdefault.jpg",
+    videoUrl: "https://vimeo.com/668558933",
   },
-  {
-    title: "Compétences Numériques & Programmation",
-    teacher: "freeCodeCamp.org",
-    image: "/digital-skills.jpg",
-    videoUrl: "https://www.youtube.com/watch?v=8PopR3x-VMY",
-  },
-  {
-    title: "Esprit d’Entreprise & Innovation",
-    teacher: "Y Combinator",
-    image: "/entrepreneurship.jpg",
-    videoUrl: "https://www.youtube.com/watch?v=CBYhVcO4WgI",
-  },
-  {
-    title: "Développement Durable & Écologie",
-    teacher: "Kurzgesagt – In a Nutshell",
-    image: "/sustainability.jpg",
-    videoUrl: "https://www.youtube.com/watch?v=3Pkb65rwZVI",
-  },
-  {
-    title: "Communication Interculturelle",
-    teacher: "TED",
-    image: "/intercultural.jpg",
-    videoUrl: "https://www.youtube.com/watch?v=YMyofREc5Jk",
-  },
-  {
-    title: "Santé Mentale & Bien-être",
-    teacher: "Psych2Go",
-    image: "/mental-health.jpg",
-    videoUrl: "https://www.youtube.com/watch?v=1Evwgu369Jw",
-  },
-  {
-    title: "Recherche Scientifique & Méthodologie",
-    teacher: "CrashCourse",
-    image: "/scientific-method.jpg",
-    videoUrl: "https://www.youtube.com/watch?v=KZaCy5Z87FA",
-  },
-  {
-    title: "Éthique & Citoyenneté",
-    teacher: "The School of Life",
-    image: "/ethics.jpg",
-    videoUrl: "https://www.youtube.com/watch?v=joCOWaaTzvM",
-  },
-  {
-    title: "Leadership & Intelligence Emotionnelle",
-    teacher: "Daniel Goleman / Big Think",
-    image: "/leadership.jpg",
-    videoUrl: "https://www.youtube.com/watch?v=Y7m9eNoB3NU",
-  },
-  {
-    title: "Littératie Financière & Économie",
-    teacher: "Graham Stephan",
-    image: "/financial-literacy.jpg",
-    videoUrl: "https://www.youtube.com/watch?v=F3QpgXBtDeo",
-  },
-
   {
     title: "Intelligence Artificielle / Prompt Engineering",
     teacher: "ForwardFuture AI",
@@ -90,43 +35,10 @@ const featuredCourses = [
   },
 
   {
-    title: "Atelier 2 – Être efficace en cuisine !",
-    teacher: "Vanessa Daigle (Vimeo, français)",
-    image: "/course_notech7.jpg",
-    videoUrl: "https://vimeo.com/1010328351",
-  },
-
-  {
-    title: "Marketing / Dropshipping expliqué (Un Créatif)",
-    teacher: "Un Créatif (YouTube, français)",
-    image: "/course_notech9.jpg",
-    videoUrl: "https://www.youtube.com/@UnCreatif",
-  },
-  {
-    title: "Économie vulgarisée (Stupid Economics)",
-    teacher: "Stupid Economics (YouTube, français)",
-    image: "/course_notech10.jpg",
-    videoUrl: "https://www.youtube.com/c/StupidEconomics",
-  },
-
-  {
     title: "Développement Web (Frontend + Backend)",
     teacher: "freeCodeCamp.org",
     image: "/dev-web.jpg",
     videoUrl: "https://www.youtube.com/watch?v=ZxKM3DCV2kE", // Learn Full Stack Web Dev from Scratch
-  },
-
-  {
-    title: "Design UI/UX & No‑Code (Figma, Webflow)",
-    teacher: "Flux Academy",
-    image: "/uiux.jpg",
-    videoUrl: "https://www.youtube.com/watch?v=3Q6iW01G3h0", // Example popular UI/UX tutorial
-  },
-  {
-    title: "Marketing Digital & Growth Hacking",
-    teacher: "Neil Patel",
-    image: "/marketing.jpg",
-    videoUrl: "https://www.youtube.com/watch?v=2iQKcZQ-P2I", // Example Social Media marketing crash course
   },
   {
     title: "Développement Mobile (Flutter / React Native)",
@@ -135,23 +47,56 @@ const featuredCourses = [
     videoUrl: "https://www.youtube.com/watch?v=1JWqfjcYenA", // Full Flutter course
   },
   {
+    title: "Récapitulatif The Millionaire Fastlane(french)",
+    teacher: "Un peu mieux",
+    image: "/money-book.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=w11droJn6nQ",
+  },
+  {
+    title: "Marketing Digital & Growth Hacking",
+    teacher: "Neil Patel",
+    image: "/marketing.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=2iQKcZQ-P2I", // Example Social Media marketing crash course
+  },
+
+  {
+    title: "Compétences Numériques & Programmation",
+    teacher: "freeCodeCamp.org",
+    image: "/digital-skills.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=8PopR3x-VMY",
+  },
+
+  {
+    title: "Esprit d’Entreprise & Innovation",
+    teacher: "Y Combinator",
+    image: "/entrepreneurship.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=CBYhVcO4WgI",
+  },
+
+  {
     title: "Création de business en ligne (e‑commerce, SaaS)",
     teacher: "Oberlo",
     image: "/ecommerce.jpg",
     videoUrl: "https://www.youtube.com/watch?v=U3m1YfNnqfE", // How to start e-commerce tutorial
   },
-  {
-    title: "Automatisation & Productivité (Python, Zapier)",
-    teacher: "Automation Step by Step",
-    image: "/automation.jpg",
-    videoUrl: "https://www.youtube.com/watch?v=HJutL1aDrVE", // Zapier & Python automation guide
-  },
 
   {
-    title: "DevOps & Cloud (AWS, Docker, CI/CD)",
-    teacher: "TechWorld with Nana",
-    image: "/devops.jpg",
-    videoUrl: "https://www.youtube.com/watch?v=Fy9k_L9hlso", // Docker & Kubernetes full course
+    title: "Leadership & Intelligence Emotionnelle",
+    teacher: "Daniel Goleman / Big Think",
+    image: "/leadership.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=Y7m9eNoB3NU",
+  },
+  {
+    title: "Pensée Critique & Résolution de Problèmes",
+    teacher: "TED-Ed",
+    image: "/critical-thinking.jpg",
+    videoUrl: "https://www.youtube.com/watch?v=dItUGF8GdTw",
+  },
+  {
+    title: "Économie vulgarisée (Stupid Economics)",
+    teacher: "Stupid Economics (YouTube, français)",
+    image: "/course_notech10.jpg",
+    videoUrl: "https://www.youtube.com/c/StupidEconomics",
   },
 ];
 
@@ -485,15 +430,25 @@ export default function MasterclassLikePage() {
   } | null>(null);
 
   // Stagger effect pour featuredCourses
-  const { refs: featuredRefs, visible: featuredVisible } = useStaggeredInView(
-    featuredCourses.length,
-    { once: true, enabled: true }
-  );
+
   // Stagger effect pour videoSeries
   const { refs: seriesRefs, visible: seriesVisible } = useStaggeredInView(
     videoSeries.length,
     { once: true, enabled: true }
   );
+
+  // Gestion de l'index courant pour le défilement
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const COURSES_PER_PAGE = 3;
+
+  const visibleCourses = featuredCourses.slice(
+    currentIndex,
+    currentIndex + COURSES_PER_PAGE
+  );
+
+  const canGoNext = currentIndex + COURSES_PER_PAGE < featuredCourses.length;
+  const canGoPrev = currentIndex > 0;
 
   return (
     <main className="relative min-h-screen bg-black text-white font-sans overflow-x-hidden">
@@ -595,27 +550,19 @@ export default function MasterclassLikePage() {
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-10 animate-slide-down">
           Cours à la une
         </h2>
+
         <SuiviModal
           open={suiviModalOpen}
           onClose={() => setSuiviModalOpen(false)}
           courseTitle={modalCourse}
           onSuccess={() => setSuiviModalOpen(false)}
         />
+
         <div className="flex flex-col gap-10">
-          {featuredCourses.map((course, idx) => (
+          {visibleCourses.map((course, idx) => (
             <div
               key={course.title}
-              ref={(el) => {
-                featuredRefs.current[idx] = el;
-              }}
-              data-idx={idx}
-              className={`flex flex-col md:flex-row items-center bg-black/80 rounded-2xl shadow-xl border border-white/10 overflow-hidden transition-all duration-100
-                ${
-                  featuredVisible[idx]
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-12"
-                }
-              `}
+              className="flex flex-col md:flex-row items-center bg-black/80 rounded-2xl shadow-xl border border-white/10 overflow-hidden transition-all duration-100 opacity-100 translate-y-0"
             >
               <Image
                 width={320}
@@ -645,7 +592,7 @@ export default function MasterclassLikePage() {
                     setModalCourse(course.title);
                     setSuiviModalOpen(true);
                   }}
-                  disabled={suiviModalOpen} // désactive tous les boutons si un modal est ouvert
+                  disabled={suiviModalOpen}
                   className="mt-2 bg-[#e86d5a] hover:bg-white hover:text-[#e86d5a] text-white px-4 py-2 rounded-full font-semibold shadow transition border border-[#e86d5a] hover:border-white disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Suivi gratuit
@@ -653,6 +600,26 @@ export default function MasterclassLikePage() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Navigation Buttons */}
+        <div className="flex justify-center gap-4 mt-10">
+          {canGoPrev && (
+            <button
+              onClick={() => setCurrentIndex((prev) => prev - COURSES_PER_PAGE)}
+              className="px-6 py-2 rounded-full border font-semibold text-white bg-white/10 hover:bg-white/20 transition"
+            >
+              Précédent
+            </button>
+          )}
+          {canGoNext && (
+            <button
+              onClick={() => setCurrentIndex((prev) => prev + COURSES_PER_PAGE)}
+              className="px-6 py-2 rounded-full border font-semibold text-white bg-white/10 hover:bg-white/20 transition"
+            >
+              Voir plus
+            </button>
+          )}
         </div>
       </section>
 
